@@ -116,7 +116,7 @@ Si le système d’information venait à être compromis, les utilisateurs conce
 Les règles de sécurité proposées tout au long de ce document ont pour vocation d’apporter une sécurité maximale de l'intégrité et de la confidentialité de toutes les données stockées (Privacy by Design) . Cette section a pour but de clarifier les points nécessitant une attention particulière du fait de la réglementation RGPD.
 
 
-## FRONTEND
+## 4-FRONTEND
 
 
 ### Controle des souces externes
@@ -138,5 +138,20 @@ Nous incorporerons une vérification stricte des entrées utilisateur afin de ga
 
 
 ### Obscurcissement des messages d'erreurs
-Nous utiliser
+Nous nous assurerons que tout les messages d'erreurs soient le plus cryptique possible afin d'eviter de divulguer des indices sur les données données stockées : 
+
+**Exemple**
+```
+ John.Doe@exemple.com
+Erreur: L'utilisateur John Doe n'existe pas !
+```
+
+Cet exemple donne l'information que cet email n'est pas enrigistré dans la base de données.
+
+## 5 - CONCLUSION
+
+Face aux différentes menaces qui existent, l'utilisation d'un framework et d'un ORM, couplée avec une utilisation judicieuse des règles d'hygiène élémentaires de codage nous permettra de sécuriser au maximum l'application. Ces principes seront appliqués a plusieurs niveaux au titre de la défense en profondeur en vue de garantir l'intégrité du système d'informations.
+
+
+
 
