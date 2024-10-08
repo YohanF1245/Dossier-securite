@@ -60,3 +60,58 @@ Nous mettrons en place un RBAC pour gérer les permissions des utilisateurs grou
 - Admin : tout les droits de création, suppression, édition ou consultation
 
 ## - API
+
+### ORM
+
+Nous avons choisi d'utiliser un ORM pour limiter les risques liés aux injections SQL. En passant par cet outil, on évite de manipuler directement les requêtes SQL, ce qui rend l'application plus sûre. L'ORM se charge de gérer les interactions avec la base de données de manière sécurisée, sans qu'on ait à se soucier des failles potentielles liées à des entrées non sécurisées. C'est une manière simple et efficace de renforcer la sécurité de notre projet.
+
+
+## Sécurisation des connexions
+
+Dans le but de nous prémunir contre les attaques de type Man In The Middle, nous implementerons le TLS afind de rendre les échanges entre le server et le client sécurisé. Ce dernier a pour but de vérifier la source de la communication, rendre les données illibles par les parties extérieures et de vérifier que la contenu n'a pas été altéré. Pour une efficacité maximale, nous le couplerons avec le HSTS afin de s'assurer qu'absolument toutes les connexion utilisent le protocole HTTPS.
+
+
+
+AUTHENTIFICATION
+    TOKEN
+    JWT
+
+LIMITATION D APPEL
+LIMITATION DE TENTATIVE DE CONNEXION
+
+
+
+## - BASE DE DONNEES
+
+### Ransomware et Défaillance humaine
+Sauvegarde
+automatisation
+fréquece
+politique de retention
+nombre de sauvegarde
+support de sauvegarde
+
+### politique de mot de passe
+
+### RGPD
+
+UUID
+
+
+## FRONTEND
+
+
+### Controle des souces externes
+
+Le contrôle des ressources externes est un facteur a prendre dans notre stratégie de sécurité. Bien qu'une sécurité soit mise en place dans le navigateur du client via Same Origin Policy qui restreint par défaut les ressources accessible a notre propre domaine, elle peut s'avérer limitante, et devrant être contournée. Nous utiliserons des règles CORS bien précises afin de limiter l'acception des ressources provenant d'origines bien définies.<br>
+Nous couplerons cette règle avec des limitations sur les types de ressources accéptées via des régles CSP dans le but de n'autoriser que certaines types de ressources bien définies.<br>
+Nous vérifierons ensuite l'intégrité des ressources externes demandées avec SRI afin de s'assurer que les ressources demandées soient bien conformes et non altérées comme prévue.
+**Exemple d'utilisation avec bootrap**
+1. Autoriser le domaine cdn.jsdelivr.net (CORS)
+2. N'autoriser que les fichiers.css (CSP)
+3. Verifier l'integrité dans la balise (SRI)
+
+
+
+
+SANITIZATION
