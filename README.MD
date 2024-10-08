@@ -57,7 +57,7 @@ Nous mettrons en place un RBAC pour gérer les permissions des utilisateurs grou
 - Visiteur (non authentifié): consulter des cours (ou un apercu)
 - Apprenant : consulter et s'inscrire a des cours
 - Coach : rédiger des cours
-- Admin : tout les droits de création, suppression, édition ou consultation
+- Admin : tout les droits de création, suppression, édition ou consultation&
 
 ## - API
 
@@ -111,7 +111,9 @@ Nous vérifierons ensuite l'intégrité des ressources externes demandées avec 
 2. N'autoriser que les fichiers.css (CSP)
 3. Verifier l'integrité dans la balise (SRI)
 
+### Gestion des entrées utilisateur
 
+Nous incorporerons une vérification stricte des entrées utilisateur afin de garantir que celles ne comportent pas de risques via l'utilisation de regex. Cela nous garantira de ne laisser passer aucune potentielle injection de script 
 
 
 SANITIZATION
