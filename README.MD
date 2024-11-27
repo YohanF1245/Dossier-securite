@@ -99,10 +99,10 @@ Bonnes pratiques mises en place pour le token de connexion:
 - L'émetteur du jeton devra être validé
 ```
 
-Pour contrer les attaques de tentative de vol de mot de passe par force brute ou par dictionnaire nous limiterons le nombre de tentatives de connexion dans le temps.
+Pour contrer les attaques de tentative de vol de mot de passe par force brute ou par dictionnaire nous limiterons le nombre de tentatives de connexion dans le temps. Le nombre de 30 requêtes par minutes est une bonne pratique courrament utilisée qui allie le confort d'utilisation et la sécurité.
 
 ## APPELS API
-Afin de contrer les attaques de type DDOS nous limiterons le nombres d'appels autorisés dans le temps.
+Afin de contrer les attaques de type DDOS nous limiterons le nombres d'appels autorisés dans le temps. 
 
 ## 3.2 - BASE DE DONNEES
 
