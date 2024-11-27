@@ -89,30 +89,30 @@ Nous avons opté pour une politique de rétention permettant de garder quinze sa
 
 Il convient d’observer quelques règles spécifiques afin de garantir une sécurité optimale des mots de passe des utilisateurs. Dans cette optique :
 Une vérification devra être effectuée avant de valider un nouveau mot de passe pour attester de :
-L’utilisation correcte de caractères minuscules, de majuscule, de chiffre et de caractère spécial.
-La longueur minimale est respectée en adéquation avec le type de compte.
-Une limite devra de longueur de mot de passe devra néanmoins être appliquée au vu de la nature d’application web du système dans le but de se prémunir d’éventuelles attaques par déni de service.
-L'absence de données personnelles telles que le nom, l’âge ou la date de naissance.
-Les mots de passe ne devront pas être stockés en clair dans la base de données, on leur préférera une utilisation de la méthode hashage – salage.
-La durée des sessions authentifiées sera limitée dans le temps, pour certaines actions (comme la suppression d’un cours), une reconnexion sera exigée.
-Le nombre de tentatives de connexions devront être limitées par un captcha au bout de quelques tentatives puis verrouillées dans le temps afin de se prémunir des tentatives d’assaut par force brute
-La demande de réinitialisation de mot de passe devra s’effectuer via un lien à durée de vie limitée envoyé sur le mail associé au compte.
-Lors de la création de mot de passe, ajouter un texte de sensibilisation aux bonnes pratiques de création d’un mot de passe sécurisé.
+- L’utilisation correcte de caractères minuscules, de majuscule, de chiffre et de caractère spécial.
+- La longueur minimale est respectée en adéquation avec le type de compte.
+Une limite de tentatives de connexion devra néanmoins être appliquée au vu de la nature d’application web du système dans le but de se prémunir d’éventuelles attaques par déni de service.
+- L'absence de données personnelles telles que le nom, l’âge ou la date de naissance.
+- Les mots de passe ne devront pas être stockés en clair dans la base de données, on leur préférera une utilisation de la méthode hashage – salage.
+- La durée des sessions authentifiées sera limitée dans le temps, pour certaines actions (comme la suppression d’un cours), une reconnexion sera exigée.
+- Le nombre de tentatives de connexions devront être limitées par un captcha au bout de quelques tentatives puis verrouillées dans le temps afin de se prémunir des tentatives d’assaut par force brute
+- La demande de réinitialisation de mot de passe devra s’effectuer via un lien à durée de vie limitée envoyé sur le mail associé au compte.
+- Lors de la création de mot de passe, ajouter un texte de sensibilisation aux bonnes pratiques de création d’un mot de passe sécurisé.
 
 
 
 ### RGPD
 
 La collecte et le traitement de données personnelles sont réglementés par la RGPD, de fait une attention particulière sera apportée sur ce sujet:
-En commençant par demander le consentement du visiteur pour la collecte et l’utilisation de ses données personnelles.
-En lui exposant de manière claire et transparente comment sont traitées les informations et dans quel but via les mentions légales.
-En ne demandant de renseigner que les données utiles.
-Par ailleurs les données ne seront pas stockées et traitées de la même manière, au vu du caractère sensible de certaines données la CNIL impose des restrictions plus importantes pour certaines données.
-Garder à l'esprit que les visiteurs ayant partagé leurs données personnelles doivent garder le contrôle sur ces dernières. Dans ce cadre trois grands principes seront appliqués:
-Droit de consultation : les utilisateurs doivent être en mesure de consulter librement à tout moment leurs données personnelles.
-Droit de rectification : les utilisateurs doivent être en mesure de pouvoir modifier librement les données qu’ils ont partagées.
-Droit à l’oubli : les utilisateurs ont le droit de pouvoir supprimer de manière complète et définitive les données qu'ils ont communiquées.
-Si le système d’information venait à être compromis, les utilisateurs concernés doivent être avertis sous soixante-douze si la violation représente un risque pour leurs droits et libertés.
+- En commençant par demander le consentement du visiteur pour la collecte et l’utilisation de ses données personnelles.
+- En lui exposant de manière claire et transparente comment sont traitées les informations et dans quel but via les mentions légales.
+- En ne demandant de renseigner que les données utiles.
+- Par ailleurs les données ne seront pas stockées et traitées de la même manière, au vu du caractère sensible de certaines données la CNIL impose des restrictions plus importantes pour certaines données.
+- Garder à l'esprit que les visiteurs ayant partagé leurs données personnelles doivent garder le contrôle sur ces dernières. Dans ce cadre trois grands principes seront appliqués:
+- Droit de consultation : les utilisateurs doivent être en mesure de consulter librement à tout moment leurs données personnelles.
+- Droit de rectification : les utilisateurs doivent être en mesure de pouvoir modifier librement les données qu’ils ont partagées.
+- Droit à l’oubli : les utilisateurs ont le droit de pouvoir supprimer de manière complète et définitive les données qu'ils ont communiquées.
+- Si le système d’information venait à être compromis, les utilisateurs concernés doivent être avertis sous soixante-douze si la violation représente un risque pour leurs droits et libertés.<br>
 Les règles de sécurité proposées tout au long de ce document ont pour vocation d’apporter une sécurité maximale de l'intégrité et de la confidentialité de toutes les données stockées (Privacy by Design) . Cette section a pour but de clarifier les points nécessitant une attention particulière du fait de la réglementation RGPD.
 
 
@@ -150,7 +150,7 @@ Cet exemple donne l'information que cet email n'est pas enrigistré dans la base
 
 ## 5 - CONCLUSION
 
-Face aux différentes menaces qui existent, l'utilisation d'un framework et d'un ORM, couplée avec une utilisation judicieuse des règles d'hygiène élémentaires de codage nous permettra de sécuriser au maximum l'application. Ces principes seront appliqués a plusieurs niveaux au titre de la défense en profondeur en vue de garantir l'intégrité du système d'informations.
+Face aux différentes menaces qui existent, l'utilisation d'un framework et d'un ORM, couplée avec une utilisation judicieuse des règles d'hygiène élémentaires de codage nous permettra de sécuriser au maximum l'application. Ces principes seront appliqués a plusieurs niveaux au titre de la défense en profondeur en vue de garantir l'intégrité du système d'informations.https://github.com/YohanF1245/Dossier-securite
 
 
 
