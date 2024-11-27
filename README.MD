@@ -3,8 +3,8 @@
 - [2 - Règles générales](#2---regles-generales)
     - [Défense en profondeur](#défense-en-profondeur)
     - [Réduction de la surface d'attaque](#réduction-de-la-surface-dattaque)
-    - [RGPD](#rgpd)
-- [ - Backend](#--backend)
+    - [Conformité RGPD](#conformité-rgpd)
+- [3 - Backend](#--backend)
     - [Moindre privilège](#moindre-privilège)
     - [RBAC](#rbac)
 - [ - API](#--api)
@@ -35,15 +35,20 @@ The rigorous implementation of this strategy will not only strengthen the trust 
 
 ### Défense en profondeur
 
-Pour garantir une efficacité maximale de la stratégie de sécurité, nous appliquerons le principe de défense en profondeur. En superposant les règles de sécurités, nous nous couvrons en cas de vulnérabilité de l'une d'entre elle.
+Pour garantir une efficacité maximale de la stratégie de sécurité, nous appliquerons le principe de défense en profondeur. En superposant les règles de sécurités à des , nous nous couvrons en cas de vulnérabilité de l'une d'entre elle.
+```
+Exemple:
+Une machine infectée pourrait profiter d'une faille pour tenter une attaque de type cross-site scripting pour injecter du code javascript via un formulaire de commentaire.
+Cette attaque va être contrée par la sanitization mise en place qui va rendre inoffensive les balises de type <script>
+```
 
 ### Réduction de la surface d'attaque
 
 L'une des erreurs dans le développement d'application web est la multiplication des points d'entrées de l'application (OS du serveur, librairies, addresses IP). Nous appliquerons le principe de réduction de la surface d'attaque pour limiter les points de vulnérabilité de l'application.
 
-### RGPD
+### Conformité RGPD
 
-Le traitement de données est hautement encadré. Nous nous conformerons à la réglementation en vigueur via plusieurs règles détaillées plus tard dans les présentations en détail des différentes couches. 
+Le traitement de données est hautement encadré. Nous nous conformerons à la réglementation en vigueur via plusieurs règles détaillées plus tard dans les présentations en détail des différentes couches. [Voir la section concernée](#rgpd)
 
 ## 3 - BACKEND
 
@@ -73,7 +78,14 @@ Dans le but de nous prémunir contre les attaques de type Man In The Middle, nou
 
 
 ## GESTION DES AUTHENTIFICATIONS
-Nous appliquerons de bonnes pratiques pour la gestion des autorisations. A commencer par la gestion contrôlée des jetons de connexion. Nous utiliserons la technologie JWT pour sécuriser l'autorisation de connexion côté client de manière sécurisée.
+Nous appliquerons de bonnes pratiques pour la gestion des autorisations. A commencer par la gestion contrôlée des jetons de connexion. Nous utiliserons la technologie JWT pour sécuriser l'autorisation de connexion côté client de manière sécurisée.<br>
+```
+Bonnes pratiques mises en place pour le token de connexion:
+- Les jetons ne contiendront pas d'informations sensibles
+- Les jetons serons chiffrés avec l'algorithme sha-256
+- L'émetteur du jeton devra être validé
+```
+
 Pour contrer les attaques de tentative de vol de mot de passe par force brute ou par dictionnaire nous limiterons le nombre de tentatives de connexion dans le temps.
 
 ## APPELS API
@@ -82,8 +94,12 @@ Afin de contrer les attaques de type DDOS nous limiterons le nombres d'appels au
 ## 3.2 - BASE DE DONNEES
 
 ### SAUVEGARDE
-Une bonne planification de la stratégie de sauvgedard est nécéssaire afin de garantir la sécurité des données des utilisateurs en cas d'attaque de type ranswomware ou de défaillance technique ou humaine. Dans cette optique nous avons opté pour une automatisation de la sauvegarde de la base dans de données dans la nuit au moment ou le pic d'utilisation est moindre pour éviter d'éventuels dysfonctionnement du système.<br>
-Nous avons opté pour une politique de rétention permettant de garder quinze sauvegardes et de les externaliser sur des disques coupés du réseau
+Une bonne planification de la stratégie de sauvegarde est nécéssaire afin de garantir la sécurité des données des utilisateurs en cas d'attaque de type ranswomware ou de défaillance technique ou humaine. Dans cette optique nous avons opté pour une automatisation de la sauvegarde de la base dans de données dans la nuit au moment ou le pic d'utilisation est moindre pour éviter d'éventuels dysfonctionnement du système.<br>
+Nous avons opté pour la stratégie de sauvegarde 3-2-1 : 
+- 3 copies de toutes les données de sauvegardes
+- 2 types de stockages différentes
+- 1 copie de la sauvegarde sur un site différent (ou cloud)
+Nous garderons les quinze dernières sauvegardes et celles-ci seront effectuées chaque jour à minuit, heure à l'actuelle l'affluence de la plateforme sera moindre pour eviter les perturbations du service.
 
 ### politique de mot de passe
 
@@ -124,10 +140,12 @@ Les règles de sécurité proposées tout au long de ce document ont pour vocati
 Le contrôle des ressources externes est un facteur a prendre dans notre stratégie de sécurité. Bien qu'une sécurité soit mise en place dans le navigateur du client via Same Origin Policy qui restreint par défaut les ressources accessible a notre propre domaine, elle peut s'avérer limitante, et devrant être contournée. Nous utiliserons des règles CORS bien précises afin de limiter l'acception des ressources provenant d'origines bien définies.<br>
 Nous couplerons cette règle avec des limitations sur les types de ressources accéptées via des régles CSP dans le but de n'autoriser que certaines types de ressources bien définies.<br>
 Nous vérifierons ensuite l'intégrité des ressources externes demandées avec SRI afin de s'assurer que les ressources demandées soient bien conformes et non altérées comme prévue.
-**Exemple d'utilisation avec bootrap**
+**Exemple d'utilisation avec boostrap**
+```
 1. Autoriser le domaine cdn.jsdelivr.net (CORS)
 2. N'autoriser que les fichiers.css (CSP)
 3. Verifier l'integrité dans la balise (SRI)
+```
 
 ### Gestion des entrées utilisateur
 
@@ -150,7 +168,7 @@ Cet exemple donne l'information que cet email n'est pas enrigistré dans la base
 
 ## 5 - CONCLUSION
 
-Face aux différentes menaces qui existent, l'utilisation d'un framework et d'un ORM, couplée avec une utilisation judicieuse des règles d'hygiène élémentaires de codage nous permettra de sécuriser au maximum l'application. Ces principes seront appliqués a plusieurs niveaux au titre de la défense en profondeur en vue de garantir l'intégrité du système d'informations.https://github.com/YohanF1245/Dossier-securite
+Face aux différentes menaces qui existent, l'utilisation d'un framework et d'un ORM, couplée avec une utilisation judicieuse des règles d'hygiène élémentaires de codage nous permettra de sécuriser au maximum l'application. Ces principes seront appliqués a plusieurs niveaux au titre de la défense en profondeur en vue de garantir l'intégrité du système d'informations.
 
 
 
