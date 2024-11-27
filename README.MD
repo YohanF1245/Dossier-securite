@@ -7,7 +7,20 @@
 - [3 - Backend](#--backend)
     - [Moindre privilège](#moindre-privilège)
     - [RBAC](#rbac)
-- [ - API](#--api)
+- [3.1 - API](#--api)
+    - [ORM](#orm)
+    - [Sécurisation des connexions](#sécurisation-des-connexions)
+    - [Gestions des authentifications](#gestions-des-authentifications)
+    - [Appels API](#appels-api)
+- [3.2 Base de données](#32---base-de-donnees)
+    - [Sauvegarde](#sauvegarde)
+    - [Politique de mot de passe](#politique-de-mot-de-passe)
+    - [RGPD](#rgpd)
+- [4 Frontend](#4-frontend)
+    - [Controle des souces externes](#controle-des-souces-externes)
+    - [Gestion des entrées utilisateur](#gestion-des-entrées-utilisateur)
+    - [Obscurcissement des messages d'erreurs](#obscurcissement-des-messages-derreurs)
+- [5 - CONCLUSION](#5---conclusion)
 ## 1 - INTRODUCTION
 
 In today’s increasingly interconnected world, securing information systems and data is a critical priority for all organizations. In this regard, it’s crucial to determine the targets, assess the level of protection they require and understand the repercussions in case of a security breach.<br>
@@ -77,7 +90,7 @@ Dans le but de nous prémunir contre les attaques de type Man In The Middle, nou
 
 
 
-## GESTION DES AUTHENTIFICATIONS
+## Gestions des authentifications
 Nous appliquerons de bonnes pratiques pour la gestion des autorisations. A commencer par la gestion contrôlée des jetons de connexion. Nous utiliserons la technologie JWT pour sécuriser l'autorisation de connexion côté client de manière sécurisée.<br>
 ```
 Bonnes pratiques mises en place pour le token de connexion:
@@ -93,7 +106,7 @@ Afin de contrer les attaques de type DDOS nous limiterons le nombres d'appels au
 
 ## 3.2 - BASE DE DONNEES
 
-### SAUVEGARDE
+### Sauvegarde
 Une bonne planification de la stratégie de sauvegarde est nécéssaire afin de garantir la sécurité des données des utilisateurs en cas d'attaque de type ranswomware ou de défaillance technique ou humaine. Dans cette optique nous avons opté pour une automatisation de la sauvegarde de la base dans de données dans la nuit au moment ou le pic d'utilisation est moindre pour éviter d'éventuels dysfonctionnement du système.<br>
 Nous avons opté pour la stratégie de sauvegarde 3-2-1 : 
 - 3 copies de toutes les données de sauvegardes
@@ -101,7 +114,7 @@ Nous avons opté pour la stratégie de sauvegarde 3-2-1 :
 - 1 copie de la sauvegarde sur un site différent (ou cloud)
 Nous garderons les quinze dernières sauvegardes et celles-ci seront effectuées chaque jour à minuit, heure à l'actuelle l'affluence de la plateforme sera moindre pour eviter les perturbations du service.
 
-### politique de mot de passe
+### Politique de mot de passe
 
 Il convient d’observer quelques règles spécifiques afin de garantir une sécurité optimale des mots de passe des utilisateurs. Dans cette optique :
 Une vérification devra être effectuée avant de valider un nouveau mot de passe pour attester de :
